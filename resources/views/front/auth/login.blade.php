@@ -7,7 +7,6 @@
             <span class="login100-form-title p-b-49">
                hesaba daxil ol
             </span>
-
             <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
                <span class="label-input100">İstifadəçi adı</span>
                <input class="input100" type="text" name="username" placeholder="Type your username">
@@ -19,7 +18,7 @@
                <input class="input100" type="password" name="pass" placeholder="Type your password">
                <span class="focus-input100" data-symbol="&#xf190;"></span>
             </div>
-
+            @success_message
             <div class="text-right p-t-8 p-b-31">
                <a href="#">
                   Şifrəni unutmusan?
@@ -34,9 +33,6 @@
                   </button>
                </div>
             </div>
-
-
-
             <div class="flex-col-c p-t-35">
                <span class="txt1 p-b-17">
                   hesabın yoxdursa

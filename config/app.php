@@ -169,6 +169,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\InputErrorProvider::class,
+        App\Providers\MessageErrorProvider::class,
+        App\Providers\MessageSuccessProvider::class,
+
     ])->toArray(),
 
     /*

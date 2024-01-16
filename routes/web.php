@@ -20,7 +20,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 Route::group(['prefix' => LaravelLocalization::setLocale() . '', 'as' => 'front.'], function () {
     Route::group(['prefix' => '', 'as' => 'auth.'], function () {
         Route::get('/login', [LoginController::class, 'index'])->name('login');
-        Route::get('/login', [RegisterController::class, 'index'])->name('register');
+        Route::get('/register', [RegisterController::class, 'index'])->name('register');
         Route::post('/sign_in', [RegisterController::class, 'register'])->name('sign_in');
         Route::get('/mainActivation', [RegisterController::class, 'activate'])->name('activate');
     });

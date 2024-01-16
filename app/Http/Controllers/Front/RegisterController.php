@@ -49,13 +49,19 @@ class RegisterController extends Controller
             'password' => $request->password,
             'activateCode' => $activateCode
         ]);
+        if($registered) {
+            return redirect()->route('front.auth.login')->with('success', 'hesabınızı təstiqləmək üçün elektron poçtunuza təstuq linki göndərildi');
+        }
     }
 
     public function activate(Request $request) {
         $user = User::where('email', '=', $request->email)->where('activateCode', $request->activation_code)->first();
 
         try {
-            $user->update(['activated' => 1]);
+            $updated = $user->update(['activated' => 1]);
+            if ($updated) {
+                return redirect()->route('front.auth.login')->with('success', 'hesabınız təstiqləndi');
+            }
         } catch (Exception $e) {
             dd($e->getMessage());
         }
