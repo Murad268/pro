@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Config as FacadesConfig;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class LoginController extends Controller
@@ -41,6 +42,15 @@ class LoginController extends Controller
                 return redirect()->route('front.auth.login')->with('error', 'hesabınız hələ təstiqlənməyib. Təstiqlənmə linki yenidən elektron poçtunuza göndərildi');
             }
         } else {
+            $credentials = $request->only('username', 'password');
+
+            $remember = $request->has('remember');
+
+            if (Auth::attempt($credentials, $remember)) {
+                dd('success');
+            } else {
+                return back()->with('error', __('istifadəçi adı və ya şifrə yanlışdır'));
+            }
         }
     }
 }
