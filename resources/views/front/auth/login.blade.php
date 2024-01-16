@@ -3,7 +3,8 @@
 <div class="limiter">
    <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
       <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-         <form class="login100-form validate-form">
+         <form action="{{route('front.auth.signin')}}" class="login100-form validate-form">
+            @csrf
             <span class="login100-form-title p-b-49">
                hesaba daxil ol
             </span>
@@ -15,10 +16,11 @@
 
             <div class="wrap-input100 validate-input" data-validate="Password is required">
                <span class="label-input100">Şifrə</span>
-               <input class="input100" type="password" name="pass" placeholder="Type your password">
+               <input class="input100" type="password" name="password" placeholder="Type your password">
                <span class="focus-input100" data-symbol="&#xf190;"></span>
             </div>
             @success_message
+            @error_message
             <div class="text-right p-t-8 p-b-31">
                <a href="#">
                   Şifrəni unutmusan?

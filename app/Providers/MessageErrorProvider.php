@@ -21,9 +21,9 @@ class MessageErrorProvider extends ServiceProvider
    public function boot()
    {
       Blade::directive('error_message', function ($expression) {
-         return "<?php if (session('success')): ?>
+         return "<?php if (session('error')): ?>
         <div class='alert alert-danger mt-2' role='alert'>
-            <?php echo session('success'); ?>
+            <?php echo session('error'); ?>
         </div>
     <?php endif; ?>";
       });

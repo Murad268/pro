@@ -33,7 +33,8 @@
         },
         "files": [
             "app/Helpers/ActivateCode.php",
-            "app/Helpers/customErrorBlock.php"
+            "app/Helpers/customErrorBlock.php",
+            "app/Helpers/PasswordHash.php"
         ]
     },
     "autoload-dev": {

@@ -20,12 +20,7 @@ class RegisterController extends Controller
     public function register(RegisterRequest $request) {
         $activateCode = ActivateCode();
         $url = FacadesConfig::get('app.url');
-        $datas = [
-            'email' => $request->email,
-            'username' => $request->username,
-            'password' => $request->password,
-            'activateCode' => $activateCode
-        ];
+   
         $subject = 'Register';
    
   
@@ -36,7 +31,7 @@ class RegisterController extends Controller
             'front.activation',
             [
                 'text' => $link,
-                "name" => $request->name
+            
             ],
             function ($message) use ($subject, $request) {
                 $message->to($request->email)->subject($subject);
@@ -46,7 +41,7 @@ class RegisterController extends Controller
         $registered = User::create([
             'email' => $request->email,
             'username' => $request->username,
-            'password' => $request->password,
+            'password' => PasswordHash($request->password),
             'activateCode' => $activateCode
         ]);
         if($registered) {
@@ -56,7 +51,7 @@ class RegisterController extends Controller
 
     public function activate(Request $request) {
         $user = User::where('email', '=', $request->email)->where('activateCode', $request->activation_code)->first();
-
+      
         try {
             $updated = $user->update(['activated' => 1]);
             if ($updated) {
