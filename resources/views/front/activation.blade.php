@@ -1,0 +1,1 @@
+salam əziz {{$name}}. Hesabınızı təstiqləmək üçün <a href="{{$text}}">tıklayın</a>
