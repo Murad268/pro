@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\auth\ResetPasswodRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -55,7 +56,7 @@ class ResetPasswordController extends Controller
         }
     }
 
-    public function add_new_password(Request $request) {
+    public function add_new_password(ResetPasswodRequest $request) {
         $user = User::where('email', $request->email)->where('activateCode', $request->code)->first();
         $updated = $user->update([
             'password' => PasswordHash($request->password)
@@ -63,7 +64,7 @@ class ResetPasswordController extends Controller
         if($updated) {
             return redirect()->route('front.auth.login')->with('success', 'şifrəniz yeniləndi');
         } else {
-            return redirect()->route('front.auth.login')->with('error', 'yenilənmə zamanı xəta');
+            return redirect()->route('front.auth.login')->with('error', 'şifrə yenilənməsi zamanı xəta');
         }
 
     }

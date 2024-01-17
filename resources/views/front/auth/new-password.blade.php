@@ -14,12 +14,13 @@
             <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
                <span class="label-input100">Password</span>
                <input class="input100" type="text" name="password" placeholder="Type your email">
-               <span class="focus-input100" data-symbol="&#xf206;"></span>
+               @error_input('password')
             </div>
             <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
                <span class="label-input100">re Password</span>
                <input class="input100" type="text" name="repassword" placeholder="Type your email">
-               <span class="focus-input100" data-symbol="&#xf206;"></span>
+
+               @error_input('repassword')
             </div>
             @success_message
             @error_message
