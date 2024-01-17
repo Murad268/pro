@@ -45,7 +45,7 @@ class RegisterController extends Controller
             'activateCode' => $activateCode
         ]);
         if($registered) {
-            return redirect()->route('front.auth.login')->with('success', 'hesabınızı təstiqləmək üçün elektron poçtunuza təstuq linki göndərildi');
+            return redirect()->route('front.auth.login')->with('success', __('site.activate_send'));
         }
     }
 
@@ -55,7 +55,7 @@ class RegisterController extends Controller
         try {
             $updated = $user->update(['activated' => 1]);
             if ($updated) {
-                return redirect()->route('front.auth.login')->with('success', 'hesabınız təstiqləndi');
+                return redirect()->route('front.auth.login')->with('success', __('site.activated'));
             }
         } catch (Exception $e) {
             dd($e->getMessage());

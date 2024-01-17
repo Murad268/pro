@@ -39,7 +39,7 @@ class LoginController extends Controller
                         $message->to($user->email)->subject($subject);
                     }
                 );
-                return redirect()->route('front.auth.login')->with('error', 'hesabınız hələ təstiqlənməyib. Təstiqlənmə linki yenidən elektron poçtunuza göndərildi');
+                return redirect()->route('front.auth.login')->with('error', __("validations.not_activated"));
             }
         } else {
             $credentials = $request->only('username', 'password');
@@ -47,9 +47,9 @@ class LoginController extends Controller
             $remember = $request->has('remember');
 
             if (Auth::attempt($credentials, $remember)) {
-                dd('success');
+                return redirect()->route('front.client.home');
             } else {
-                return back()->with('error', __('istifadəçi adı və ya şifrə yanlışdır'));
+                return back()->with('error', __("validations.notfound"));
             }
         }
     }

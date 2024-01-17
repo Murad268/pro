@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\LoginController;
 use App\Http\Controllers\Front\RegisterController;
 use App\Http\Controllers\Front\ResetPasswordController;
@@ -29,5 +30,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . '', 'as' => 'front.
         Route::get('/reset-password', [ResetPasswordController::class, 'reset_pass_open_reset'])->name('reset_pass_open_reset');
         Route::get('/new-password', [ResetPasswordController::class, 'new_password'])->name('new_password');
         Route::post('/add_new_password', [ResetPasswordController::class, 'add_new_password'])->name('add_new_password');
+    });
+
+
+    Route::group(['prefix' => '', 'as' => 'client.'], function () {
+        Route::get('/', [HomeController::class, 'index'])->name('home');
     });
 });

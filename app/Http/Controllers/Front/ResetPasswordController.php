@@ -25,7 +25,7 @@ class ResetPasswordController extends Controller
         $checkEmail = User::where('email', $request->email)->get();
 
         if ($checkEmail->count() < 1) {
-            return redirect()->back()->with('error', 'bu elektron poçt ilə hesab mövcud deyil');
+            return redirect()->back()->with('error',__('site.email_notfound'));
         } else {
             $user = User::where('email', $request->email)->first();
             $url = FacadesConfig::get('app.url');
@@ -42,7 +42,7 @@ class ResetPasswordController extends Controller
                     $message->to($user->email)->subject($subject);
                 }
             );
-            return redirect()->route('front.auth.login')->with('success', 'şifrə bərpası üçün link elektron poçtunuza göndərildi');
+            return redirect()->route('front.auth.login')->with('success',__('site.reset_pass_send'));
         }
     }
 
@@ -52,7 +52,7 @@ class ResetPasswordController extends Controller
         if($checkEmail) {
            return view('front.auth.new-password',['email' => $checkEmail->email, "code" => $checkEmail->activateCode]);
         } else {
-            dd(1);
+            dd("error");
         }
     }
 
@@ -62,9 +62,9 @@ class ResetPasswordController extends Controller
             'password' => PasswordHash($request->password)
         ]);
         if($updated) {
-            return redirect()->route('front.auth.login')->with('success', 'şifrəniz yeniləndi');
+            return redirect()->route('front.auth.login')->with('success', __('site.success_reset'));
         } else {
-            return redirect()->route('front.auth.login')->with('error', 'şifrə yenilənməsi zamanı xəta');
+            return redirect()->route('front.auth.login')->with('error', __('site.error_reset'));
         }
 
     }

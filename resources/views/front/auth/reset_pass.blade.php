@@ -1,4 +1,4 @@
-@extends('front.layout.front')
+@extends('front.auth.layout.front')
 @section('content')
 <div class="limiter">
    <div class="container-login100" style="background-image: url('images/bg-01.jpg');">

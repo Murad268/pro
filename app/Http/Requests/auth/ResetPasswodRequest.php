@@ -17,8 +17,6 @@ class ResetPasswodRequest extends FormRequest
 
             'password' => [
                 'required',
-                // 'min:8',
-                // 'regex:/^(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]+$/',
             ],
             'repassword' => 'required|same:password',
         ];
@@ -29,11 +27,9 @@ class ResetPasswodRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'password.required' => 'Şifrə sahəsi mütləqdir.',
-            'password.min' => 'Şifrə minimum 8 simvol olmalıdır.',
-            'password.regex' => 'Şifrədə minimum bir böyük hərf və bir simvol olmalıdır.',
-            'repassword.required' => 'Təsdiq şifrəsi sahəsi mütləqdir.',
-            'repassword.same' => 'Təsdiq şifrəsi şifrə ilə uyğun gəlmir.',
+            'password.required' => __("validations.required"),
+            'repassword.required' => __("validations.required"),
+            'repassword.same' => __("validations.pass_same"),
         ];
     }
 }
