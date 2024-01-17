@@ -10,7 +10,6 @@
             </span>
             <input type="hidden" name="email" value="{{$email}}">
             <input type="hidden" name="code" value="{{$code}}">
-
             <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
                <span class="label-input100">{{__('form.password')}}</span>
                <input class="input100" type="text" name="password" placeholder="{{__('form.type_newpassword')}}">
@@ -19,7 +18,6 @@
             <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
                <span class="label-input100">{{__('form.type_password')}}</span>
                <input class="input100" type="text" name="repassword" placeholder="{{__('form.type_renewpassword')}}">
-
                @error_input('repassword')
             </div>
             @success_message
@@ -32,7 +30,6 @@
                   </button>
                </div>
             </div>
-
          </form>
       </div>
    </div>

@@ -10,10 +10,13 @@
                   <img src="./assets/icons/photoeditorsdk-export-removebg-preview.png" alt="" />
                </div>
                @guest
-               <div class="navbar__login">qeydiyyatdan keç</div>
+               <div class="navbar__login">{{__('site.register')}}</div>
                @endguest
                @auth
-               <div class="navbar__login">{{auth()->user()->username}}</div>
+               <div style="display:  flex; align-items: center; column-gap: 10px">
+                  <div class="navbar__login">{{auth()->user()->username}}</div>
+                  <a style="display: bloack;" href="{{route('front.client.logout')}}">{{__('site.logout')}}</a>
+               </div>
                @endauth
             </div>
          </div>
@@ -81,10 +84,14 @@
             <div class="container">
                <div class="navbar__wrapper">
                   @guest
-                  <div class="navbar__login">qeydiyyatdan keç</div>
+                  <div class="navbar__login">{{__('site.register')}}</div>
                   @endguest
                   @auth
-                  <div class="navbar__login">{{auth()->user()->username}}</div>
+                  <div style="display:  flex; align-items: center; column-gap: 10px">
+                     <div class="navbar__login">{{auth()->user()->username}}</div>
+                     <a style="display: bloack;" href="{{route('front.client.logout')}}">{{__('site.logout')}}</a>
+                  </div>
+
                   @endauth
                   <div class="navbar__logo">
                      <img src="./assets/icons/photoeditorsdk-export-removebg-preview.png" alt="" />

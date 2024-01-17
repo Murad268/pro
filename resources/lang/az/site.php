@@ -7,5 +7,6 @@ return [
    'email_notfound' => 'bu elektron poçt ilə hesab mövcud deyil',
    'reset_pass_send' => 'şifrə bərpası üçün link elektron poçtunuza göndərildi',
    'success_reset' => 'şifrəniz yeniləndi',
-   'error_reset' => 'şifrə yenilənməsi zamanı xəta'
+   'error_reset' => 'şifrə yenilənməsi zamanı xəta',
+   'logout' => "çıxış et",
 ];

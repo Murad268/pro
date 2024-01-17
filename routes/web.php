@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\LoginController;
+use App\Http\Controllers\Front\LogoutController;
 use App\Http\Controllers\Front\RegisterController;
 use App\Http\Controllers\Front\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
@@ -20,7 +21,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
 Route::group(['prefix' => LaravelLocalization::setLocale() . '', 'as' => 'front.'], function () {
-    Route::group(['prefix' => '', 'as' => 'auth.'], function () {
+    Route::group(['prefix' => '', 'as' => 'auth.', 'middleware' => "auth.redirect"], function () {
         Route::get('/register', [RegisterController::class, 'index'])->name('register');
         Route::post('/signup', [RegisterController::class, 'register'])->name('signup');
         Route::get('/mainActivation', [RegisterController::class, 'activate'])->name('activate');
@@ -33,7 +34,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . '', 'as' => 'front.
     });
 
 
-    Route::group(['prefix' => '', 'as' => 'client.'], function () {
+    Route::group(['prefix' => '', 'as' => 'client.', 'middleware' => "auth"], function () {
+        Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
         Route::get('/', [HomeController::class, 'index'])->name('home');
     });
 });
