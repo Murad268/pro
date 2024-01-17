@@ -33,7 +33,7 @@ class ResetPasswordController extends Controller
             $subject = 'Reset Password';
             $link = $url . "/new-password?email=" . $user->email . "&activation_code=" . $user->activateCode;
             Mail::send(
-                'front.resetPass',
+                'front.auth.resetPass',
                 [
                     'text' => $link,
 

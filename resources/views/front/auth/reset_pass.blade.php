@@ -6,11 +6,11 @@
          <form action="{{route('front.auth.reset_pass_open_reset')}}" class="login100-form validate-form">
             @csrf
             <span class="login100-form-title p-b-49">
-               hesab bərpası
+               {{__('form.reset_account')}}
             </span>
             <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
-               <span class="label-input100">Email</span>
-               <input class="input100" type="text" name="email" placeholder="Type your email">
+               <span class="label-input100">{{__('form.email')}}</span>
+               <input class="input100" type="text" name="email" placeholder="{{__('form.type_email')}}">
             </div>
             @success_message
             @error_message
@@ -24,11 +24,11 @@
             </div>
             <div class="flex-col-c p-t-35">
                <span class="txt1 p-b-17">
-                  hesabın yoxdursa
+                  {{__('form.if_acc_not')}}
                </span>
 
-               <a href="#" class="txt2">
-                  qeydiyyat keç
+               <a href="{{route('front.auth.register')}}" class="txt2">
+                  {{__('form.register')}}
                </a>
             </div>
          </form>

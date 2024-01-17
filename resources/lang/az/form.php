@@ -1,0 +1,22 @@
+<?php
+return [
+   'enter_account' => 'hesaba daxil ol',
+   'reset_account' => 'hesab bərpası',
+   'username' => 'İstifadəçi adı',
+   'password' => 'Şifrə',
+   'forget_password' => 'Şifrəni unutmusuz?',
+   'login' => 'daxil ol',
+   'if_acc_not' => 'əgər hesabınız yoxdursa',
+   'if_acc_have' => 'əgər hesabınız varsa',
+   "register" => 'qeydiyyatdan keç',
+   "type_username" => 'İstifadəçi adınızı daxil edin',
+   "type_password" => 'Şifrənizi daxil edin',
+   "type_email" => 'Elektron poçtunuzu daxil edin',
+   "type_same_password" => 'Şifrənizi təkrarən daxil edin',
+   "email" => "Elektron poçt",
+   "same_password" => "Şifrə təkrarı",
+   'new_password' => 'Yeni şifrə',
+   'new_password' => 'Yeni şifrə',
+   "type_newpassword" => 'Yeni şifrənizi daxil edin',
+   'type_renewpassword' => 'Yeni şifrənizi bir daha daxil edin',
+];

@@ -9,7 +9,12 @@
                <div class="navbar__logo">
                   <img src="./assets/icons/photoeditorsdk-export-removebg-preview.png" alt="" />
                </div>
+               @guest
                <div class="navbar__login">qeydiyyatdan keç</div>
+               @endguest
+               @auth
+               <div class="navbar__login">{{auth()->user()->username}}</div>
+               @endauth
             </div>
          </div>
       </nav>
@@ -75,7 +80,12 @@
          <nav class="navbar">
             <div class="container">
                <div class="navbar__wrapper">
+                  @guest
                   <div class="navbar__login">qeydiyyatdan keç</div>
+                  @endguest
+                  @auth
+                  <div class="navbar__login">{{auth()->user()->username}}</div>
+                  @endauth
                   <div class="navbar__logo">
                      <img src="./assets/icons/photoeditorsdk-export-removebg-preview.png" alt="" />
                   </div>
