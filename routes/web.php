@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Front\LoginController;
 use App\Http\Controllers\Front\RegisterController;
+use App\Http\Controllers\Front\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -22,10 +23,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . '', 'as' => 'front.
         Route::get('/register', [RegisterController::class, 'index'])->name('register');
         Route::post('/signup', [RegisterController::class, 'register'])->name('signup');
         Route::get('/mainActivation', [RegisterController::class, 'activate'])->name('activate');
-
-
         Route::get('/login', [LoginController::class, 'index'])->name('login');
         Route::get('/signin', [LoginController::class, 'login'])->name('signin');
-
+        Route::get('/reset-password-enter-email', [ResetPasswordController::class, 'reset_pass_email'])->name('reset_pass_email');
+        Route::get('/reset-password', [ResetPasswordController::class, 'reset_pass_open_reset'])->name('reset_pass_open_reset');
+        Route::get('/new-password', [ResetPasswordController::class, 'new_password'])->name('new_password');
+        Route::post('/add_new_password', [ResetPasswordController::class, 'add_new_password'])->name('add_new_password');
     });
 });

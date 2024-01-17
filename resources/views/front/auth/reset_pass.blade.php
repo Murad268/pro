@@ -3,30 +3,18 @@
 <div class="limiter">
    <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
       <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-         <form action="{{route('front.auth.signin')}}" class="login100-form validate-form">
+         <form action="{{route('front.auth.reset_pass_open_reset')}}" class="login100-form validate-form">
             @csrf
             <span class="login100-form-title p-b-49">
-               hesaba daxil ol
+               hesab bərpası
             </span>
             <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
-               <span class="label-input100">İstifadəçi adı</span>
-               <input class="input100" type="text" name="username" placeholder="Type your username">
+               <span class="label-input100">Email</span>
+               <input class="input100" type="text" name="email" placeholder="Type your email">
                <span class="focus-input100" data-symbol="&#xf206;"></span>
-            </div>
-
-            <div class="wrap-input100 validate-input" data-validate="Password is required">
-               <span class="label-input100">Şifrə</span>
-               <input class="input100" type="password" name="password" placeholder="Type your password">
-               <span class="focus-input100" data-symbol="&#xf190;"></span>
             </div>
             @success_message
             @error_message
-            <div class="text-right p-t-8 p-b-31">
-               <a href="{{route('front.auth.reset_pass_email')}}">
-                  Şifrəni unutmusan?
-               </a>
-            </div>
-
             <div class="container-login100-form-btn">
                <div class="wrap-login100-form-btn">
                   <div class="login100-form-bgbtn"></div>
@@ -48,7 +36,5 @@
       </div>
    </div>
 </div>
-
-
 <div id="dropDownSelect1"></div>
 @endsection
