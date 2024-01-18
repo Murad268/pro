@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\LoginController;
 use App\Http\Controllers\Front\LogoutController;
@@ -37,5 +38,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . '', 'as' => 'front.
     Route::group(['prefix' => '', 'as' => 'client.', 'middleware' => "auth"], function () {
         Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
         Route::get('/', [HomeController::class, 'index'])->name('home');
+    });
+});
+
+
+Route::group(['prefix' => LaravelLocalization::setLocale() . 'admin', 'as' => 'admin.'], function () {
+    Route::group(['prefix' => '', 'as' => 'admin.'], function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('index');
+
     });
 });

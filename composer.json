@@ -34,7 +34,8 @@
         "files": [
             "app/Helpers/ActivateCode.php",
             "app/Helpers/customErrorBlock.php",
-            "app/Helpers/PasswordHash.php"
+            "app/Helpers/PasswordHash.php",
+            "app/Helpers/GetLinkAdmin.php"
         ]
     },
     "autoload-dev": {
