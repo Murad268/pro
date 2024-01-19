@@ -1,12 +1,9 @@
 @extends('admin.layout.admin')
 @section('content')
-<div class="content-wrapper">
+
+<div style="padding: 20px;" class="content-wrapper">
    <!-- Content Header (Page header) -->
-   <x-admin-content-headerr-component/>
-   <!-- /.content-header -->
-
-   <!-- Main content -->
-
-   <!-- /.content -->
+   <x-admin-content-headerr-component />
+   
 </div>
 @endsection

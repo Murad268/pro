@@ -6,6 +6,7 @@ use App\Http\Controllers\Front\LoginController;
 use App\Http\Controllers\Front\LogoutController;
 use App\Http\Controllers\Front\RegisterController;
 use App\Http\Controllers\Front\ResetPasswordController;
+use App\Http\Controllers\PointsOfSalesController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -45,6 +46,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . '', 'as' => 'front.
 Route::group(['prefix' => LaravelLocalization::setLocale() . 'admin', 'as' => 'admin.'], function () {
     Route::group(['prefix' => '', 'as' => 'admin.'], function () {
         Route::get('/', [DashboardController::class, 'index'])->name('index');
+        Route::resource('/points_of_sales', PointsOfSalesController::class);
+
 
     });
 });

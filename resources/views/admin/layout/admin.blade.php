@@ -16,7 +16,10 @@
    </div>
    <!-- ./wrapper -->
    <x-admin-footer-component />
-   @include('admin.layout.partials.foot')
+   <div  class="content-wrapper">
+      @include('admin.layout.partials.foot')
+
+   </div>
 </body>
 
 </html>
