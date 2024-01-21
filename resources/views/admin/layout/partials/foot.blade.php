@@ -155,9 +155,12 @@
 
      let select = document.querySelector('.ids_proccess');
      let proccess_form = document.querySelector('.proccess_form');
+     let ids_vals = document.querySelector('.ids_vals');
 
-     select.addEventListener('change', function() {
-         proccessConfirmation(proccess_form)
 
+     select.addEventListener('change', function(e) {
+         if (e.target.value !== "" && ids_vals.value !== "") {
+             proccessConfirmation(proccess_form)
+         }
      });
  </script>

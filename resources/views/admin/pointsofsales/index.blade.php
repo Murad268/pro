@@ -89,10 +89,10 @@
             </div>
             <form method="post" class="proccess_form" action="{{route('admin.admin.ids_proccess')}}">
                 @csrf
-                <input value="" type="hidden" name="ids">
+                <input class="ids_vals" value="" type="hidden" name="ids">
                 <label style="margin-right: 12px;" for="">seçilmiş elementlər ilə nə edilsin</label>
                 <select class="ids_proccess" name="ids_proccess" id="">
-                    <option disabled selected value="">seç</option>
+                    <option selected value="">seç</option>
                     <option value="delete">sil</option>
                     <option value="active">statusları aktivləşdir</option>
                     <option value="passive">statusları sıfırla</option>

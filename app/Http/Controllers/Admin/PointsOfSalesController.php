@@ -14,8 +14,12 @@ class PointsOfSalesController extends Controller
     public function __construct(private SimpleService $simple, private DataService $data)
     {
     }
+
+
+
     public function index()
     {
+
         $shops = PointOfSale::paginate(10);
         return view('admin.pointsofsales.index', compact('shops'));
     }
@@ -73,26 +77,7 @@ class PointsOfSalesController extends Controller
         $ids = explode(',', $request->ids);
 
         $ids_proccess = $request->ids_proccess;
-        if ($ids_proccess == "delete") {
-            foreach ($ids as $id) {
-                $shop = PointOfSale::findOrFail($id);
-                $this->simple->simple_delete($shop);
-            }
-            return redirect()->route('admin.admin.points_of_sales.index')->with('success', __('site.success_remove'));
-        } else if($ids_proccess== "active") {
-            foreach ($ids as $id) {
-                $shop = PointOfSale::findOrFail($id);
-                $shop->status = true;
-                $shop->save();
-            }
-            return redirect()->route('admin.admin.points_of_sales.index')->with('success', __('site.success_active'));
-        } else if($ids_proccess == "passive") {
-            foreach ($ids as $id) {
-                $shop = PointOfSale::findOrFail($id);
-                $shop->status = false;
-                $shop->save();
-            }
-            return redirect()->route('admin.admin.points_of_sales.index')->with('success', __('site.success_passive'));
-        }
+
+        return $this->data->do_proccess($ids, $ids_proccess, 'admin.admin.points_of_sales.index');
     }
 }
