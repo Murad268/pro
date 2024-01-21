@@ -77,4 +77,87 @@
              },
          }
      };
+
+
+
+     function deleteConfirmation(event) {
+         // Your existing deleteConfirmation function code
+
+         // Update the hidden input value when checkboxes are checked or unchecked
+         updateHiddenInputValue();
+     }
+
+     function updateHiddenInputValue() {
+         // Get all checked checkboxes
+         const checkedCheckboxes = document.querySelectorAll('.checkbox:checked');
+
+         // Extract IDs from checked checkboxes
+         const checkedIds = Array.from(checkedCheckboxes).map(checkbox => checkbox.value);
+
+         // Update the value of the hidden input field
+         document.querySelector('input[name="ids"]').value = checkedIds.join(',');
+     }
+
+     // Attach an event listener to each checkbox to call updateHiddenInputValue on change
+     document.querySelectorAll('.checkbox').forEach(checkbox => {
+         checkbox.addEventListener('change', updateHiddenInputValue);
+     });
+
+
+
+
+     function proccessConfirmation(event, text = false) {
+
+         let locale = document.documentElement.getAttribute("data-locale");
+
+         Swal.fire({
+             title: translateProccess()[locale].title,
+             text: translateProccess()[locale].exitMessage,
+             icon: 'warning',
+             showCancelButton: true,
+             confirmButtonColor: '#3085d6',
+             cancelButtonColor: '#d33',
+             confirmButtonText: translateProccess()[locale].confirmButtonText,
+             cancelButtonText: translateProccess()[locale].exit,
+         }).then((result) => {
+             if (result.isConfirmed) {
+                 event.submit();
+             }
+         });
+     }
+
+
+     function translateProccess() {
+         return {
+             en: {
+                 title: "Are you sure ?",
+                 exitMessage: "",
+                 confirmButtonText: "Yes",
+                 exit: "no!",
+             },
+             az: {
+                 title: "Əminsiniz?",
+                 exitMessage: "",
+                 confirmButtonText: "Bəli!",
+                 exit: "Xeyr!"
+             },
+             ru: {
+                 title: "Вы уверены?",
+                 exitMessage: "",
+                 confirmButtonText: "Да!",
+                 exit: "Нет!",
+             },
+         }
+     };
+
+
+
+
+     let select = document.querySelector('.ids_proccess');
+     let proccess_form = document.querySelector('.proccess_form');
+
+     select.addEventListener('change', function() {
+         proccessConfirmation(proccess_form)
+
+     });
  </script>

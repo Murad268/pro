@@ -48,6 +48,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . 'admin', 'as' => 'a
     Route::group(['prefix' => '', 'as' => 'admin.'], function () {
         Route::get('/', [DashboardController::class, 'index'])->name('index');
         Route::resource('/points_of_sales', PointsOfSalesController::class);
+        Route::post('/ids_proccess', [PointsOfSalesController::class, 'ids_proccess'])->name('ids_proccess');
+
 
 
     });

@@ -37,6 +37,7 @@
                         <thead>
 
                             <tr>
+                                <th>Check for delete</th>
                                 <th>Məntəqənin adı</th>
                                 <th>Slug</th>
                                 <th>Status</th>
@@ -46,6 +47,13 @@
                         <tbody>
                             @foreach ($shops as $shop)
                             <tr>
+                                <td style="padding-top: 10px">
+                                    <div style="padding-top: 5px" class="form-check">
+                                        <input value="{{$shop->id}}" name="status" type="checkbox" class="form-check-input checkbox" id="exampleCheck1">
+
+                                    </div>
+                                </td>
+
                                 <td>{{$shop->name}}</td>
                                 <td>{{$shop->slug}}</td>
                                 <td>
@@ -66,18 +74,30 @@
                                     </form>
                                 </td>
                             </tr>
+
                             @endforeach
                         </tbody>
                     </table>
                 </div>
                 <!-- /.card-body -->
+
                 @else
-                <div style="padding: 20px;" type="button"  class="toastsDefaultWarning">
+                <div style="padding: 20px;" type="button" class="toastsDefaultWarning">
                     Heç bir məlumat tapılmadı
                 </div>
                 @endif
             </div>
-            <!-- /.card -->
+            <form method="post" class="proccess_form" action="{{route('admin.admin.ids_proccess')}}">
+                @csrf
+                <input value="" type="hidden" name="ids">
+                <label style="margin-right: 12px;" for="">seçilmiş elementlər ilə nə edilsin</label>
+                <select class="ids_proccess" name="ids_proccess" id="">
+                    <option disabled selected value="">seç</option>
+                    <option value="delete">sil</option>
+                    <option value="active">statusları aktivləşdir</option>
+                    <option value="passive">statusları sıfırla</option>
+                </select>
+            </form>
         </div>
     </div>
 

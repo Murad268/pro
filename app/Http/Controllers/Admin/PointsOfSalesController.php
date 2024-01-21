@@ -14,16 +14,19 @@ class PointsOfSalesController extends Controller
     public function __construct(private SimpleService $simple, private DataService $data)
     {
     }
-    public function index() {
+    public function index()
+    {
         $shops = PointOfSale::paginate(10);
         return view('admin.pointsofsales.index', compact('shops'));
     }
 
-    public function create() {
+    public function create()
+    {
         return view('admin.pointsofsales.create');
     }
 
-    public function store(PointsOfSalesRequest $request) {
+    public function store(PointsOfSalesRequest $request)
+    {
         $data = $request->all();
 
         $data['status'] = (bool)$request->status;
@@ -62,6 +65,34 @@ class PointsOfSalesController extends Controller
             return redirect()->route('admin.admin.points_of_sales.index')->with('success', __('site.success_remove'));
         } else {
             return redirect()->route('admin.admin.points_of_sales.index')->with('error', __('site.error_remove'));
+        }
+    }
+
+    public function ids_proccess(Request $request)
+    {
+        $ids = explode(',', $request->ids);
+
+        $ids_proccess = $request->ids_proccess;
+        if ($ids_proccess == "delete") {
+            foreach ($ids as $id) {
+                $shop = PointOfSale::findOrFail($id);
+                $this->simple->simple_delete($shop);
+            }
+            return redirect()->route('admin.admin.points_of_sales.index')->with('success', __('site.success_remove'));
+        } else if($ids_proccess== "active") {
+            foreach ($ids as $id) {
+                $shop = PointOfSale::findOrFail($id);
+                $shop->status = true;
+                $shop->save();
+            }
+            return redirect()->route('admin.admin.points_of_sales.index')->with('success', __('site.success_active'));
+        } else if($ids_proccess == "passive") {
+            foreach ($ids as $id) {
+                $shop = PointOfSale::findOrFail($id);
+                $shop->status = false;
+                $shop->save();
+            }
+            return redirect()->route('admin.admin.points_of_sales.index')->with('success', __('site.success_passive'));
         }
     }
 }
