@@ -8,5 +8,6 @@ use Spatie\Translatable\HasTranslations;
 class PointOfSale extends Model
 {
     use HasFactory, HasTranslations;
-    public $translatable = ['name'];
+    protected $guarded = [];
+    public $translatable = ['name', 'slug'];
 }

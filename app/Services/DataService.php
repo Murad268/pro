@@ -16,6 +16,13 @@ class DataService
     {
         return Str::slug($str);
     }
+    public function sluggableArray($array, $key)
+    {
+        $slugs = [];
+        foreach ($array[$key] as $key => $value) {
+            $slugs[$key] = $this->sluggable($value);
+        }
+        return $slugs;
+    }
 
-   
 }

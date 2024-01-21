@@ -11,15 +11,20 @@
 
 
         <form action="{{route('admin.admin.points_of_sales.store')}}" method="post">
+
             @csrf
             <div class="card-body">
                 @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
                 <div class="form-group">
                     <label for="exampleInputEmail1">Satış məntəqəsinin adı</label>
-                    <input type="text" value="{{ old('name.' . $lang)}}" class="form-control" id="exampleInputEmail1" name="name" placeholder="satış məntəqəsinin adını daxil edin">
+                    <input type="text" value="{{ old('name.' . $lang)}}" class="form-control" id="exampleInputEmail1" name="name[{{ $lang }}]"  placeholder="satış məntəqəsinin adını daxil edin">
                 </div>
                 @endforeach
                 @error_input('name.' . $lang)
+                <div class="form-check">
+                    <input type="checkbox" checked class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" name="status" for="exampleCheck1">status</label>
+                </div>
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Əlavə et</button>

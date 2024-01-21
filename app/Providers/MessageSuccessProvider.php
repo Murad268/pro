@@ -22,7 +22,7 @@ class MessageSuccessProvider extends ServiceProvider
    {
       Blade::directive('success_message', function ($expression) {
          return "<?php if (session('success')): ?>
-        <div class='alert alert-success mt-2' role='alert'>
+        <div style='font-size: 11px;' class='alert alert-success mt-2' role='alert'>
             <?php echo session('success'); ?>
         </div>
     <?php endif; ?>";

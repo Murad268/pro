@@ -6,15 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\points_of_sales\PointsOfSalesRequest;
 use App\Models\PointOfSale;
 use Illuminate\Http\Request;
-use App\Services\SimpleService;
 use App\Services\DataService;
+use App\Services\SimpleService;
+
 class PointsOfSalesController extends Controller
 {
     public function __construct(private SimpleService $simple, private DataService $data)
     {
     }
     public function index() {
-        return view('admin.pointsofsales.index');
+        $shops = PointOfSale::paginate(10);
+        return view('admin.pointsofsales.index', compact('shops'));
     }
 
     public function create() {
@@ -24,12 +26,22 @@ class PointsOfSalesController extends Controller
     public function store(PointsOfSalesRequest $request) {
         $data = $request->all();
         $data['status'] = (bool)$request->status;
-        $data['slug'] = $this->data->sluggableArray($data, 'title');
+        $data['slug'] = $this->data->sluggableArray($data, 'name');
         $request = new Request($data);
         if ($this->simple->simple_create(new PointOfSale(), $request)) {
-            return redirect()->route('admin.categories.index')->with('success', __('status.success_add'));
+            return redirect()->route('admin.admin.points_of_sales.index')->with('success', __('site.success_add'));
         } else {
-            return redirect()->route('admin.categories.index')->with('error', __('status.error_add'));
+            return redirect()->route('admin.admin.points_of_sales.index')->with('error', __('site.error_add'));
+        }
+    }
+
+    public function destroy($id)
+    {
+        $shop = PointOfSale::findOrFail($id);
+        if ($this->simple->simple_delete($shop)) {
+            return redirect()->route('admin.admin.points_of_sales.index')->with('success', __('site.success_remove'));
+        } else {
+            return redirect()->route('admin.admin.points_of_sales.index')->with('error', __('site.error_remove'));
         }
     }
 }

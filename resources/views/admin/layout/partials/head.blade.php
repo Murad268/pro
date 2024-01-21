@@ -23,4 +23,10 @@
    <link rel="stylesheet" href="{{GetLinkAdmin('plugins/daterangepicker/daterangepicker.css')}}">
    <!-- summernote -->
    <link rel="stylesheet" href="{{GetLinkAdmin('plugins/summernote/summernote-bs4.min.css')}}">
+   <style>
+    .alert {
+        font-size: 14px !important;
+        padding: 5px !important
+    }
+   </style>
 </head>
