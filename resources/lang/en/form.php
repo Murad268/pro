@@ -1,0 +1,21 @@
+<?php
+return [
+    'enter_account' => 'Log in to your account',
+    'reset_account' => 'Reset account',
+    'username' => 'Username',
+    'password' => 'Password',
+    'forget_password' => 'Forgot Password?',
+    'login' => 'Log in',
+    'if_acc_not' => 'If you don\'t have an account',
+    'if_acc_have' => 'If you already have an account',
+    "register" => 'Register',
+    "type_username" => 'Enter your username',
+    "type_password" => 'Enter your password',
+    "type_email" => 'Enter your email',
+    "type_same_password" => 'Re-enter your password',
+    "email" => "Email",
+    "same_password" => "Confirm Password",
+    'new_password' => 'New Password',
+    "type_newpassword" => 'Enter your new password',
+    'type_renewpassword' => 'Re-enter your new password',
+];
