@@ -35,7 +35,8 @@
             "app/Helpers/ActivateCode.php",
             "app/Helpers/customErrorBlock.php",
             "app/Helpers/PasswordHash.php",
-            "app/Helpers/GetLinkAdmin.php"
+            "app/Helpers/GetLinkAdmin.php",
+            "app/Helpers/GetImage.php"
         ]
     },
     "autoload-dev": {

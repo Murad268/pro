@@ -51,10 +51,16 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . 'admin', 'as' => 'a
 
 
         Route::resource('/points_of_sales', PointsOfSalesController::class);
-        Route::post('/ids_proccess', [PointsOfSalesController::class, 'ids_proccess'])->name('ids_proccess');
-        Route::get('/ids_proccess/search', [PointsOfSalesController::class, 'search'])->name('ids_proccess.search');
+        Route::post('/points_of_sales/ids_proccess', [PointsOfSalesController::class, 'ids_proccess'])->name('points_of_sales.ids_proccess');
+
+
+        Route::get('/points_of_sales-search', [PointsOfSalesController::class, 'search'])->name('ids_proccess.search');
+
+
 
         Route::resource('/products', ProductsController::class);
+        Route::post('/products/ids_proccess', [ProductsController::class, 'ids_proccess'])->name('products.ids_proccess');
+        Route::get('/products-search', [ProductsController::class, 'search'])->name('products.search');
 
     });
 });

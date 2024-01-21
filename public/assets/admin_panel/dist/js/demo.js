@@ -675,15 +675,15 @@
   }, true).append($clear_btn)
   $container.append($brand_variants)
 
-  var active_brand_color = null
-  $('.brand-link')[0].classList.forEach(function (className) {
-    if (logo_skins.indexOf(className) > -1 && active_brand_color === null) {
-      active_brand_color = className.replace('navbar-', 'bg-')
-    }
-  })
+//   var active_brand_color = null
+//   $('.brand-link')[0].classList.forEach(function (className) {
+//     if (logo_skins.indexOf(className) > -1 && active_brand_color === null) {
+//       active_brand_color = className.replace('navbar-', 'bg-')
+//     }
+//   })
 
-  if (active_brand_color) {
-    $brand_variants.find('option.' + active_brand_color).prop('selected', true)
-    $brand_variants.removeClass().addClass('custom-select mb-3 text-light border-0 ').addClass(active_brand_color)
-  }
+//   if (active_brand_color) {
+//     $brand_variants.find('option.' + active_brand_color).prop('selected', true)
+//     $brand_variants.removeClass().addClass('custom-select mb-3 text-light border-0 ').addClass(active_brand_color)
+//   }
 })(jQuery)

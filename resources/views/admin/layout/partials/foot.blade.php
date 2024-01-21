@@ -33,6 +33,8 @@
  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
  <script src="{{GetLinkAdmin('dist/js/pages/dashboard.js')}}"></script>
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+ <script script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js">
+ </script>
  <script>
      function deleteConfirmation(event, text = false) {
          event.preventDefault();
@@ -80,12 +82,6 @@
 
 
 
-     function deleteConfirmation(event) {
-         // Your existing deleteConfirmation function code
-
-         // Update the hidden input value when checkboxes are checked or unchecked
-         updateHiddenInputValue();
-     }
 
      function updateHiddenInputValue() {
          // Get all checked checkboxes
@@ -104,6 +100,12 @@
      });
 
 
+     document.querySelector('.select-all')?.addEventListener('click', () => {
+         document.querySelectorAll('.checkbox').forEach(checkbox => {
+             checkbox.setAttribute('checked', true);
+             updateHiddenInputValue()
+         });
+     })
 
 
      function proccessConfirmation(event, text = false) {
@@ -158,9 +160,23 @@
      let ids_vals = document.querySelector('.ids_vals');
 
 
-     select.addEventListener('change', function(e) {
+     select?.addEventListener('change', function(e) {
          if (e.target.value !== "" && ids_vals.value !== "") {
              proccessConfirmation(proccess_form)
          }
      });
+
+
+
+     const editors = document.querySelectorAll('#editor');
+     editors.forEach(item => {
+         ClassicEditor
+             .create(item)
+             .then(newEditor => {
+                 console.log(newEditor)
+             })
+             .catch(error => {
+                 console.error(error);
+             });
+     })
  </script>

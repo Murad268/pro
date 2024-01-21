@@ -78,7 +78,7 @@ class PointsOfSalesController extends Controller
 
         $ids_proccess = $request->ids_proccess;
 
-        return $this->data->do_proccess($ids, $ids_proccess, 'admin.admin.points_of_sales.index');
+        return $this->data->do_proccess(new PointOfSale(),$ids, $ids_proccess);
     }
 
     public function search(Request $request) {

@@ -18,7 +18,7 @@ class ImageService
         foreach ($request->file() as $key => $file) {
             $extension = $file->getClientOriginalExtension();
             $randomName = Str::random(10);
-            $lastPath = $path . $randomName . "." . $extension;
+            $lastPath =  $path . $randomName . "." . $extension;
 
             try {
                 $file->storeAs($path, $randomName . "." . $extension, 'public');
@@ -29,7 +29,7 @@ class ImageService
                 // Set directory permissions to 755
                 chmod('storage/' . $directoryPath, 0755);
 
-                $model->update([$key => $lastPath]);
+                $model->update([$key =>  $lastPath]);
             } catch (\Exception $e) {
                 dd($e->getMessage());
                 return false;

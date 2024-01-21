@@ -10,7 +10,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title"><a class="btn btn-primary" href="{{route('admin.admin.points_of_sales.create')}}">create</a></h3>
-
+                    <h3 class="card-title select-all" id="selectAllCheckbox"><a class="ml-1 btn btn-success">Select all</a></h3>
                     <div class="card-tools">
 
                         <form action="{{route('admin.admin.ids_proccess.search')}}" class="input-group input-group-sm" style="width: 350px;">
@@ -38,7 +38,7 @@
                         <thead>
 
                             <tr>
-                                <th>Check for delete</th>
+                                <th>Check for proccess</th>
                                 <th>Məntəqənin adı</th>
                                 <th>Slug</th>
                                 <th>Status</th>
@@ -92,7 +92,8 @@
                 </div>
                 @endif
             </div>
-            <form method="post" class="proccess_form" action="{{route('admin.admin.ids_proccess')}}">
+            @if($shops->count())
+            <form method="post" class="proccess_form" action="{{route('admin.admin.points_of_sales.ids_proccess')}}">
                 @csrf
                 <input class="ids_vals" value="" type="hidden" name="ids">
                 <label style="margin-right: 12px;" for="">seçilmiş elementlər ilə nə edilsin</label>
@@ -103,6 +104,7 @@
                     <option value="passive">statusları sıfırla</option>
                 </select>
             </form>
+            @endif
         </div>
     </div>
 
