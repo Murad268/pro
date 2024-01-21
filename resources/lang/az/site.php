@@ -13,4 +13,6 @@ return [
     'error_add'  => "məlumatların əlavə edilməsi zamanı xəta",
     'success_remove' => 'məlumatlar uğurla silindilər',
     'error_remove'  => "məlumatların silinməsi zamanı xəta",
+    'success_update' => 'məlumatlar uğurla yeniləndilər',
+    'error_update'  => "məlumatların yenilənməsi zamanı xəta",
 ];

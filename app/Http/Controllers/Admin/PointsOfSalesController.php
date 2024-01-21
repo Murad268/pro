@@ -25,6 +25,7 @@ class PointsOfSalesController extends Controller
 
     public function store(PointsOfSalesRequest $request) {
         $data = $request->all();
+
         $data['status'] = (bool)$request->status;
         $data['slug'] = $this->data->sluggableArray($data, 'name');
         $request = new Request($data);
@@ -34,7 +35,26 @@ class PointsOfSalesController extends Controller
             return redirect()->route('admin.admin.points_of_sales.index')->with('error', __('site.error_add'));
         }
     }
+    public function edit($id)
+    {
+        $shop = PointOfSale::findOrFail($id);
+        return view('admin.pointsofsales.edit', compact('shop'));
+    }
 
+
+    public function update(PointsOfSalesRequest $request, $id)
+    {
+        $shop = PointOfSale::findOrFail($id);
+        $data = $request->all();
+        $data['status'] = (bool)$request->status;
+        $data['slug'] = $this->data->sluggableArray($data, 'name');
+        $request = new Request($data);
+        if ($this->simple->simple_update($shop, $request)) {
+            return redirect()->route('admin.admin.points_of_sales.index')->with('success', __('site.success_update'));
+        } else {
+            return redirect()->route('admin.admin.points_of_sales.index')->with('error', __('site.error_update'));
+        }
+    }
     public function destroy($id)
     {
         $shop = PointOfSale::findOrFail($id);

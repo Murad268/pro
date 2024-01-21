@@ -10,24 +10,24 @@
         </div>
 
 
-        <form action="{{route('admin.admin.points_of_sales.store')}}" method="post">
-
+        <form action="{{route('admin.admin.points_of_sales.update', $shop->id)}}" method="post">
             @csrf
+            @method('PATCH')
             <div class="card-body">
                 @foreach(LaravelLocalization::getSupportedLanguagesKeys() as $lang)
                 <div class="form-group">
                     <label for="exampleInputEmail1">Satış məntəqəsinin adı</label>
-                    <input type="text" value="{{ old('name.' . $lang)}}" class="form-control" id="exampleInputEmail1" name="name[{{ $lang }}]" placeholder="satış məntəqəsinin adını daxil edin">
+                    <input type="text" value="{{ old('name.' . $lang, $shop->name)}}" class="form-control" id="exampleInputEmail1" name="name[{{ $lang }}]" placeholder="satış məntəqəsinin adını daxil edin">
                 </div>
                 @endforeach
                 @error_input('name.' . $lang)
                 <div class="form-check">
-                    <input @checked(old('status' )) type="checkbox" name="status" class="form-check-input" id="exampleCheck1">
+                    <input name="status" @checked(old('status', $shop->status )) type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">status</label>
                 </div>
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Əlavə et</button>
+                <button type="submit" class="btn btn-primary">Yenilə</button>
             </div>
         </form>
     </div>
