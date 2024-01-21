@@ -27,7 +27,6 @@ class DataService
     }
 
     public function do_proccess($ids, $ids_proccess, $route) {
-
         if ($ids_proccess == "delete") {
             foreach ($ids as $id) {
                 $shop = PointOfSale::findOrFail($id);
@@ -49,5 +48,16 @@ class DataService
             }
             return redirect()->route($route)->with('success', __('site.success_passive'));
         }
+    }
+
+
+
+    public function simple_search($model, $query, $q, $paginate) {
+        if ($q) {
+            $results = $model::where(DB::raw("LOWER($query)"), 'like', '%' . strtolower($q) . '%')->paginate($paginate);
+        } else {
+            $results = $model::paginate($paginate);
+        }
+        return $results;
     }
 }

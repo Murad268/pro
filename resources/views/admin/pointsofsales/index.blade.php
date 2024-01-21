@@ -13,8 +13,9 @@
 
                     <div class="card-tools">
 
-                        <div class="input-group input-group-sm" style="width: 350px;">
-                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                        <form action="{{route('admin.admin.ids_proccess.search')}}" class="input-group input-group-sm" style="width: 350px;">
+
+                            <input name="q" type="text" class="form-control float-right" placeholder="Search">
 
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-default">
@@ -22,7 +23,7 @@
                                 </button>
                             </div>
 
-                        </div>
+                        </form>
                         @success_message
                         @error_message
                     </div>
@@ -59,10 +60,10 @@
                                 <td>
                                     @if($shop->status)
                                     <button type="button" class="btn btn-success btn-block btn-sm"><i class="fa fa-check mr-3" aria-hidden="true"></i>
-                                        hazırda məntəqə görünür</button>
+                                        hazırda səhifədə görünür</button>
                                     @else
                                     <button type="button" class="btn btn-danger btn-block btn-sm"><i class="fa fa-times mr-3" aria-hidden="true"></i>
-                                        hazırda məntəqə görünmür</button>
+                                        hazırda səhifədə görünmür</button>
                                     @endif
                                 </td>
                                 <td class="controlls-flex" style="display: flex; ">
@@ -78,9 +79,13 @@
                             @endforeach
                         </tbody>
                     </table>
-                </div>
-                <!-- /.card-body -->
 
+                </div>
+
+                <!-- /.card-body -->
+                <div style="width: max-content; margin:0 auto" class="pagination">
+                    {{ $shops->appends(['q' => request('q')])->links('pagination::bootstrap-4') }}
+                </div>
                 @else
                 <div style="padding: 20px;" type="button" class="toastsDefaultWarning">
                     Heç bir məlumat tapılmadı

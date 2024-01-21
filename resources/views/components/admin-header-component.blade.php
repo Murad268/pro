@@ -101,7 +101,12 @@
                         <p class="text">Satış məntəqələri</p>
                     </a>
                 </li>
-
+                <li class="nav-item">
+                    <a href="{{route('admin.admin.products.index')}}" class="nav-link">
+                        <i class="fa fa-truck" aria-hidden="true"></i>
+                        <p class="text">Məhsullar</p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

@@ -80,4 +80,13 @@ class PointsOfSalesController extends Controller
 
         return $this->data->do_proccess($ids, $ids_proccess, 'admin.admin.points_of_sales.index');
     }
+
+    public function search(Request $request) {
+        $q = $request->q;
+        $paginate = 10;
+        $model = PointOfSale::class;
+        $query = 'name';
+        $shops = $this->data->simple_search($model, $query, $q, $paginate);
+        return view('admin.pointsofsales.index', compact('shops'));
+    }
 }
