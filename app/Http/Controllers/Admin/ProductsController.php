@@ -31,7 +31,7 @@ class ProductsController extends Controller
         $data = $request->all();
         $data['status'] = (bool)$request->status;
         $data['slug'] = $this->data->sluggableArray($data, 'name');
-        $request = $request->merge($data);;
+        $request = $request->merge($data);
 
         if ((bool)$this->simple->simple_create_with_img(new Product(), $request, 'products/')) {
             return redirect()->route('admin.admin.products.index')->with('success', __('site.success_add'));
@@ -39,6 +39,72 @@ class ProductsController extends Controller
             return redirect()->route('admin.admin.products.index')->with('error', __('site.error_add'));
         }
     }
+
+
+
+    public function edit(Product $product) {
+        return view('admin.products.edit', compact('product'));
+    }
+
+
+
+
+    public function update(CreateProductsRequest $request, Product $product)
+    {
+      
+        $data = $request->all();
+
+        $array = [
+            'image' => $product->image
+        ];
+
+
+
+
+
+
+
+        
+        $propertiesToCheck = ['image'];
+
+
+
+
+
+
+
+
+        foreach ($propertiesToCheck as $property) {
+            if ($request->has($property)) {
+                $array[$property] = $product->$property;
+            }
+        }
+
+
+        
+
+
+
+
+
+        $data['status'] = (bool)$request->status;
+        $data['slug'] = $this->data->sluggableArray($data, 'name');
+        $request = $request->merge($data);
+
+
+
+
+        if ((bool)$this->simple->simple_update_with_img($product, $request, $array, 'products/')) {
+            return redirect()->route('admin.admin.products.index')->with('success', __('status.success_add'));
+        } else {
+            return redirect()->route('admin.admin.products.index')->with('error', __('status.error_add'));
+        }
+    }
+
+
+
+
+
 
 
 
