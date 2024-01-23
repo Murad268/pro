@@ -194,8 +194,14 @@
      })
 
 
-     $('.datepicker').datepicker();
+     $('.datepicker').datepicker({
+         dateFormat: 'yy-mm-dd',
+         changeMonth: true,
+         changeYear: true,
+         yearRange: '2010:2024'
+     });
      $(".select2").select2({
+         dateFormat: 'yy-mm-dd',
          tags: true
      }).on('change', function(e) {
          document.querySelector('.select2_form').submit()
