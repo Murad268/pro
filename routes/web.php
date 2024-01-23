@@ -70,6 +70,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . 'admin', 'as' => 'a
         Route::get('/product/{slug}', [ProductController::class, 'index'])->name('product.index');
         Route::get('/product_statistic/create/{slug}', [ProductController::class, 'create'])->name('product.create');
         Route::post('/product_statistic/store/{slug}', [ProductController::class, 'store'])->name('product.store');
+        Route::post('/product_statistic/ids_proccess/{slug}', [ProductController::class, 'ids_proccess'])->name('product.ids_proccess');
+        Route::post('/product_statistic/destroy/{slug}', [ProductController::class, 'destroy'])->name('product.destroy');
+
+        Route::get('/product_statistic/search/{slug}', [ProductController::class, 'search'])->name('product.search');
+
+
+        Route::get('/product_statistic/for_shops/{slug}', [ProductController::class, 'for_shops'])->name('product.for_shops');
 
         
     });

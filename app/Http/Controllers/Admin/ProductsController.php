@@ -59,19 +59,7 @@ class ProductsController extends Controller
         ];
 
 
-
-
-
-
-
-        
         $propertiesToCheck = ['image'];
-
-
-
-
-
-
 
 
         foreach ($propertiesToCheck as $property) {
@@ -79,12 +67,6 @@ class ProductsController extends Controller
                 $array[$property] = $product->$property;
             }
         }
-
-
-        
-
-
-
 
 
         $data['status'] = (bool)$request->status;

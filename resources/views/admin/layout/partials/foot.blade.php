@@ -36,7 +36,7 @@
  <script script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js">
  </script>
  <script src="{{GetLinkAdmin('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
-
+ <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
  <script>
      function deleteConfirmation(event, text = false) {
          event.preventDefault();
@@ -184,4 +184,9 @@
 
 
      $('.datepicker').datepicker();
+     $(".select2").select2({
+         tags: true
+     }).on('change', function(e) {
+         document.querySelector('.select2_form').submit()
+     });
  </script>

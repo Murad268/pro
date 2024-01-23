@@ -23,7 +23,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <!-- summernote -->
     <link rel="stylesheet" href="{{GetLinkAdmin('plugins/summernote/summernote-bs4.min.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <style>
+        .select2 {
+            width: 300px !important;
+        }
+
+        .select2 * {
+            padding-top: 4px !important;
+            height: 40px !important;
+        }
+
         .alert {
             font-size: 14px !important;
             padding: 5px !important
