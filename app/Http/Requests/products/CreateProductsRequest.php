@@ -19,8 +19,6 @@ class CreateProductsRequest extends FormRequest
 
         foreach ($supportedLanguages as $lang) {
             $rules["name.$lang"] = 'required';
-            $rules["desc.$lang"] = 'required';
-            $rules["info.$lang"] = 'required';
         }
         return $rules;
     }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PointsOfSalesController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\LoginController;
@@ -62,5 +63,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . 'admin', 'as' => 'a
         Route::post('/products/ids_proccess', [ProductsController::class, 'ids_proccess'])->name('products.ids_proccess');
         Route::get('/products-search', [ProductsController::class, 'search'])->name('products.search');
 
+
+
+
+
+        Route::get('/product/{slug}', [ProductController::class, 'index'])->name('product.index');
+        Route::get('/product_statistic/create/{slug}', [ProductController::class, 'create'])->name('product.create');
+        Route::post('/product_statistic/store/{slug}', [ProductController::class, 'store'])->name('product.store');
+
+        
     });
 });

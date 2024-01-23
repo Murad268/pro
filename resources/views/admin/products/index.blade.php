@@ -64,7 +64,7 @@
                                     </a>
                                     @endif
                                 </td>
-                                <td>{{$product->name}}</td>
+                                <td><a style="color: #212529;text-decoration:underline" href="{{route('admin.admin.product.index', $product->slug)}}">{{$product->name}}</a></td>
                                 <td>{{$product->slug}}</td>
                                 <td>{!!$product->desc!!}</td>
                                 <td>{{$product->barcode}}</td>
