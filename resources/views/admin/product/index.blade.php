@@ -11,7 +11,6 @@
                <h3 class="card-title"><a class="btn btn-primary" href="{{route('admin.admin.product.create', $slug)}}">create statistic</a></h3>
                <h3 class="card-title select-all all" id="selectAllCheckbox"><a class="ml-1 btn btn-success">select all</a></h3>
                <div class="card-tools">
-
                   <!-- <form action="{{route('admin.admin.product.search', ['slug' => $slug])}}" class="input-group input-group-sm" style="width: 350px;">
                      <input name="q" type="text" class="form-control float-right" placeholder="Search">
                      <div class="input-group-append">
@@ -19,23 +18,27 @@
                            <i class="fas fa-search"></i>
                         </button>
                      </div>
-
                   </form> -->
-                  <form class="select2_form" action="{{route('admin.admin.product.for_shops', ['slug' => $slug, 'filter'=> $filter])}}">
-                     <select name="select2" class="form-control select2">
-                        @if($filter)
-                        <option value="0">Hamısı</option>
-                        @forEach($shops as $shop)
-                        <option {{$shop->id == $filter ? 'selected': ""}} value="{{$shop->id}}">{{$shop->name}}</option>
-                        @endforeach
-                        @else
-                        <option value="0">Hamısı</option>
-                        @forEach($shops as $shop)
-                        <option value="{{$shop->id}}">{{$shop->name}}</option>
-                        @endforeach
-                        @endif
-                     </select>
-                  </form>
+                  <div style="display: flex; column-gap: 6px">
+                     <form action="">
+                        <input style="height: 40px;" class="form-control" type="text" name="daterange" value="01/01/2018 - 01/15/2018" />
+                     </form>
+                     <form class="select2_form" action="{{route('admin.admin.product.for_shops', ['slug' => $slug, 'filter'=> $filter])}}">
+                        <select name="select2" class="form-control select2">
+                           @if($filter)
+                           <option value="0">Hamısı</option>
+                           @forEach($shops as $shop)
+                           <option {{$shop->id == $filter ? 'selected': ""}} value="{{$shop->id}}">{{$shop->name}}</option>
+                           @endforeach
+                           @else
+                           <option value="0">Hamısı</option>
+                           @forEach($shops as $shop)
+                           <option value="{{$shop->id}}">{{$shop->name}}</option>
+                           @endforeach
+                           @endif
+                        </select>
+                     </form>
+                  </div>
                   @success_message
                   @error_message
                </div>
@@ -52,6 +55,7 @@
                         <th>Satış məntəqəsi</th>
                         <th>Qiyməti</th>
                         <th>Barcode</th>
+                        <th>Tarix</th>
                         <th>Kontroll elementləri</th>
                      </tr>
                   </thead>
@@ -82,6 +86,7 @@
                         <td>
                            {{$product->product[0]->barcode}}
                         </td>
+                        <td>{{$product->time}}</td>
                         <td class="controlls-flex" style="display: flex; ">
                            <!-- <a class="btn btn-outline-success m-1" href="{{route('admin.admin.products.edit', $product->id)}}"><i class="fas fa-edit"></i></a> -->
                            <form onsubmit="return deleteConfirmation(event)" method="post" action="{{route('admin.admin.product.destroy', $product->id)}}">

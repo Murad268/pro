@@ -20,7 +20,7 @@ class ProductController extends Controller
         $shops = PointOfSale::all();
         $filter = 0;
         $product = Product::where('slug->'.app()->getLocale(), 'like', '%' . $slug . '%')->first();
-        $statistic = Statistic::where('product_id', $product->id)->paginate(10);
+        $statistic = Statistic::where('product_id', $product->id)->orderBy('time')->paginate(10);
         return view('admin.product.index', compact('statistic','slug', 'shops', 'filter'));
     }
 
@@ -85,9 +85,9 @@ class ProductController extends Controller
         $product = Product::where('slug->' . app()->getLocale(), 'like', '%' . $slug . '%')->first();
 
         if($filter == 0) {
-            $statistic = Statistic::where('product_id', $product->id)->paginate(10);
+            $statistic = Statistic::where('product_id', $product->id)->orderBy('time')->paginate(10);
         } else {
-            $statistic = Statistic::where('product_id', $product->id)->where('point_of_sale_id', $filter)->paginate(10);
+            $statistic = Statistic::where('product_id', $product->id)->orderBy('time')->where('point_of_sale_id', $filter)->paginate(10);
         }
        
         return view('admin.product.index', compact('statistic', 'slug', 'shops', 'filter'));
