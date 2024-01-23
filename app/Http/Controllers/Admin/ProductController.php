@@ -18,9 +18,10 @@ class ProductController extends Controller
     }
     public function index($slug) {
         $shops = PointOfSale::all();
+        $filter = 0;
         $product = Product::where('slug->'.app()->getLocale(), 'like', '%' . $slug . '%')->first();
         $statistic = Statistic::where('product_id', $product->id)->paginate(10);
-        return view('admin.product.index', compact('statistic','slug', 'shops'));
+        return view('admin.product.index', compact('statistic','slug', 'shops', 'filter'));
     }
 
     public function create($slug) {

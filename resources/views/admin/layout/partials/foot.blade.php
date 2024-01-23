@@ -102,12 +102,22 @@
      });
 
 
-     document.querySelector('.select-all')?.addEventListener('click', () => {
-         document.querySelectorAll('.checkbox').forEach(checkbox => {
-             checkbox.setAttribute('checked', true);
-             updateHiddenInputValue()
-         });
-     })
+     document.querySelector('.select-all')?.addEventListener('click', (e) => {
+         if (e.target.classList.contains('all')) {
+             document.querySelectorAll('.checkbox').forEach(checkbox => {
+                 checkbox.checked = true;
+                 updateHiddenInputValue();
+             });
+             e.target.classList.remove('all');
+         } else {
+             e.target.classList.add('all');
+             document.querySelectorAll('.checkbox').forEach(checkbox => {
+                 checkbox.checked = false;
+             });
+             document.querySelector('.ids_vals').value = "";
+         }
+     });
+
 
 
      function proccessConfirmation(event, text = false) {

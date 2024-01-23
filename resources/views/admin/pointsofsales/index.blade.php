@@ -10,7 +10,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title"><a class="btn btn-primary" href="{{route('admin.admin.points_of_sales.create')}}">create</a></h3>
-                    <h3 class="card-title select-all" id="selectAllCheckbox"><a class="ml-1 btn btn-success">Select all</a></h3>
+                    <button style="font-size: 16px;" class="card-title select-all all ml-1 btn btn-success" id="selectAllCheckbox">Select all</button>
                     <div class="card-tools">
 
                         <form action="{{route('admin.admin.ids_proccess.search')}}" class="input-group input-group-sm" style="width: 350px;">

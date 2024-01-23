@@ -9,7 +9,7 @@
          <div class="card">
             <div class="card-header">
                <h3 class="card-title"><a class="btn btn-primary" href="{{route('admin.admin.product.create', $slug)}}">create statistic</a></h3>
-               <h3 class="card-title select-all" id="selectAllCheckbox"><a class="ml-1 btn btn-success">select all</a></h3>
+               <h3 class="card-title select-all all" id="selectAllCheckbox"><a class="ml-1 btn btn-success">select all</a></h3>
                <div class="card-tools">
 
                   <!-- <form action="{{route('admin.admin.product.search', ['slug' => $slug])}}" class="input-group input-group-sm" style="width: 350px;">
@@ -22,7 +22,6 @@
 
                   </form> -->
                   <form class="select2_form" action="{{route('admin.admin.product.for_shops', ['slug' => $slug, 'filter'=> $filter])}}">
-
                      <select name="select2" class="form-control select2">
                         @if($filter)
                         <option value="0">Hamısı</option>
@@ -31,12 +30,10 @@
                         @endforeach
                         @else
                         <option value="0">Hamısı</option>
-
                         @forEach($shops as $shop)
                         <option value="{{$shop->id}}">{{$shop->name}}</option>
                         @endforeach
                         @endif
-
                      </select>
                   </form>
                   @success_message
