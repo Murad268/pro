@@ -28,7 +28,7 @@
                </div>
 
             </div>
-            @if($products->count())
+            @if($statistic->count())
             <!-- /.card-header -->
             <div class="card-body table-responsive p-0">
 
@@ -40,42 +40,38 @@
                         <th>Check for proccess</th>
                         <th>Rəsm</th>
                         <th>Məhsulun adı</th>
-                        <th>Slug</th>
-                        <th>Açıqlama</th>
+                        <th>Satış məntəqəsi</th>
+                        <th>Qiyməti</th>
                         <th>Barcode</th>
-                        <th>Məlumat</th>
-                        <th>Status</th>
                         <th>Kontroll elementləri</th>
                      </tr>
                   </thead>
                   <tbody>
-                     @foreach ($products as $product)
+                     @foreach ($statistic as $product)
                      <tr>
-                        <td style="padding-top: 10px">
+                        <td>
                            <div style="padding-top: 5px" class="form-check">
                               <input value="{{$product->id}}" name="status" type="checkbox" class="form-check-input checkbox" id="exampleCheck1">
                            </div>
                         </td>
                         <td>
-                           @if($product->image)
-                           <a target="_blank" href="{{GetImage($product->image)}}">
-                              <img style="width: 120px;" src="{{GetImage('storage/'.$product->image)}}" alt="">
+                           @if($product->product[0]->image)
+                           <a target="_blank" href="{{GetImage('storage/'.$product->product[0]->image)}}">
+                              <img style="width: 120px;" src="{{GetImage('storage/'.$product->product[0]->image)}}" alt="">
                            </a>
                            @endif
                         </td>
-                        <td><a style="color: #212529;text-decoration:underline" href="{{route('admin.admin.product.index', $product->slug)}}">{{$product->name}}</a></td>
-                        <td>{{$product->slug}}</td>
-                        <td>{!!$product->desc!!}</td>
-                        <td>{{$product->barcode}}</td>
-                        <td>{{$product->info}}</td>
                         <td>
-                           @if($product->status)
-                           <button type="button" class="btn btn-success btn-block btn-sm"><i class="fa fa-check mr-3" aria-hidden="true"></i>
-                              hazırda səhifədə görünür</button>
-                           @else
-                           <button type="button" class="btn btn-danger btn-block btn-sm"><i class="fa fa-times mr-3" aria-hidden="true"></i>
-                              hazırda səhifədə görünmür</button>
-                           @endif
+                           {{$product->product[0]->name}}
+                        </td>
+                        <td>
+                           {{$product->shop[0]->name}}
+                        </td>
+                        <td>
+                           {{$product->price}}
+                        </td>
+                        <td>
+                           {{$product->product[0]->barcode}}
                         </td>
                         <td class="controlls-flex" style="display: flex; ">
                            <a class="btn btn-outline-success m-1" href="{{route('admin.admin.products.edit', $product->id)}}"><i class="fas fa-edit"></i></a>
@@ -95,7 +91,7 @@
 
             <!-- /.card-body -->
             <div style="width: max-content; margin:0 auto" class="mt-3 pagination">
-               {{ $products->appends(['q' => request('q')])->links('pagination::bootstrap-4') }}
+               {{ $statistic->appends(['q' => request('q')])->links('pagination::bootstrap-4') }}
             </div>
             @else
             <div style="padding: 20px;" type="button" class="toastsDefaultWarning">
@@ -103,7 +99,7 @@
             </div>
             @endif
          </div>
-         @if($products->count())
+         @if($statistic->count())
          <form method="post" class="proccess_form" action="{{route('admin.admin.products.ids_proccess')}}">
             @csrf
             <input class="ids_vals" value="" type="hidden" name="ids">

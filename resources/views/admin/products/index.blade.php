@@ -59,7 +59,7 @@
                                 </td>
                                 <td>
                                     @if($product->image)
-                                    <a target="_blank" href="{{GetImage($product->image)}}">
+                                    <a target="_blank" href="{{GetImage('storage/'.$product->image)}}">
                                         <img style="width: 120px;" src="{{GetImage('storage/'.$product->image)}}" alt="">
                                     </a>
                                     @endif
