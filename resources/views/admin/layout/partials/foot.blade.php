@@ -19,8 +19,8 @@
  <script src="{{GetLinkAdmin('plugins/jquery-knob/jquery.knob.min.js')}}"></script>
  <!-- daterangepicker -->
  <script src="{{GetLinkAdmin('plugins/moment/moment.min.js')}}"></script>
- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
- <script script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js">
+ <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script> -->
+ <!-- <script script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"> -->
  </script>
  <!-- Tempusdominus Bootstrap 4 -->
  <!-- Summernote -->
@@ -194,21 +194,12 @@
      })
 
 
-     $('.datepicker').datepicker({
-         dateFormat: 'yy-mm-dd',
-         changeMonth: true,
-         changeYear: true,
-         yearRange: '2010:2024'
-     });
+
+
      $(".select2").select2({
          dateFormat: 'yy-mm-dd',
          tags: true
-     }).on('change', function(e) {
-         document.querySelector('.select2_form').submit()
-     });
-     $('input[name="daterange"]').daterangepicker({
-         opens: 'left'
-     }, function(start, end, label) {
-         console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-     });
+     })
+
+
  </script>

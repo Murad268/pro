@@ -78,6 +78,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . 'admin', 'as' => 'a
 
         Route::get('/product_statistic/for_shops/{slug}', [ProductController::class, 'for_shops'])->name('product.for_shops');
 
-        
+        Route::get('/product_statistic/for_data/{slug}', [ProductController::class, 'for_data'])->name('product.for_data');
+
+
     });
 });

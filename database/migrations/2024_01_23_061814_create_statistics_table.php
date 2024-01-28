@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('point_of_sale_id');
             $table->string('product_id');
-            $table->string('time');
+            $table->timestamp('time');
             $table->timestamps();
         });
     }

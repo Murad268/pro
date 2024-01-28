@@ -16,10 +16,8 @@
             <div style="display: block" class="input-group date datepicker" data-provide="datepicker">
                <label>Tarix</label>
                <div>
-                  <input value="{{ old('time')}}" name="time" placeholder="tarixi daxil et" type="text" class="form-control">
-                  <div class="input-group-addon">
-                     <span class="glyphicon glyphicon-th"></span>
-                  </div>
+                  <input value="{{ old('time')}}" name="time" placeholder="tarixi daxil et" type="date" class="form-control">
+               
                </div>
             </div>
             @error_input('time')
