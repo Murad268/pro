@@ -7,5 +7,5 @@
    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet" />
    <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet" />
    <link rel="stylesheet" href="./assets/css/index.css" />
-   <title>Document</title>
+   <title data-lang="{{app()->getLocale()}}" class="title">{{app()->getLocale()}}</title>
 </head>

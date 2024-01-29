@@ -89,11 +89,22 @@ class DataService
 
     public function simple_search($model, $query, $q, $paginate)
     {
+       
         if ($q) {
-            $results = $model::where(DB::raw("LOWER($query)"), 'like', '%' . strtolower($q) . '%')->paginate($paginate);
+            if ($paginate) {
+                
+                $results = $model::where(DB::raw("LOWER($query)"), 'like', '%' . strtolower($q) . '%')->paginate($paginate);
+            } else {
+
+                $results = $model::where(DB::raw("LOWER($query)"), 'like', '%' . strtolower($q) . '%')->get();
+            }
         } else {
+
             $results = $model::paginate($paginate);
         }
         return $results;
     }
+
+
+    
 }

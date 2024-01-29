@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PointsOfSalesController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductsController;
+use App\Http\Controllers\Front\ApiProductsController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\LoginController;
 use App\Http\Controllers\Front\LogoutController;
@@ -45,6 +46,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . '', 'as' => 'front.
     });
 });
 
+
+Route::get('/getProducts/{q}', [ApiProductsController::class, 'getProducts'])->name('getProducts');
 
 Route::group(['prefix' => LaravelLocalization::setLocale() . 'admin', 'as' => 'admin.'], function () {
     Route::group(['prefix' => '', 'as' => 'admin.'], function () {

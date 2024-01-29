@@ -29,47 +29,22 @@
                <div class="row d-flex justify-content-center">
                   <div class="col-md-6">
                      <div class="card">
-                        <div style="display: flex; column-gap: 10px" class="input-box">
-                           <input placeholder="məhsul axtar" type="text" class="form-control" />
+                        <form style="display: flex; column-gap: 10px" class="input-box searchProduct">
+                           <input name="q" placeholder="məhsul axtar" type="text" class="form-control search_form" />
                            <button style="width: 100px;" class="btn btn-success">axtar</button>
+                        </form>
+                        <div class="results">
+                           <!-- <div class="list border-bottom">
+                              <div class="list_image">
+                                 <img src="./assets/images/sirab.jpg" alt="" />
+                              </div>
+                              <div class="d-flex flex-column ml-3">
+                                 <span>Client communication policy</span>
+                              </div>
+                           </div> -->
+
+
                         </div>
-                        <!-- <div class="results">
-										<div class="list border-bottom">
-											<div class="list_image">
-												<img src="./assets/images/sirab.jpg" alt="" />
-											</div>
-											<div class="d-flex flex-column ml-3">
-												<span>Client communication policy</span>
-											</div>
-										</div>
-
-										<div class="list border-bottom">
-											<div class="list_image">
-												<img src="./assets/images/sirab.jpg" alt="" />
-											</div>
-											<div class="d-flex flex-column ml-3">
-												<span>Major activity done</span>
-											</div>
-										</div>
-
-										<div class="list border-bottom">
-											<div class="list_image">
-												<img src="./assets/images/sirab.jpg" alt="" />
-											</div>
-											<div class="d-flex flex-column ml-3">
-												<span>Calling to USA Clients</span>
-											</div>
-										</div>
-
-										<div class="list">
-											<div class="list_image">
-												<img src="./assets/images/sirab.jpg" alt="" />
-											</div>
-											<div class="d-flex flex-column ml-3">
-												<span>Client communication policy</span>
-											</div>
-										</div>
-									</div> -->
                      </div>
                   </div>
                </div>
@@ -100,4 +75,40 @@
       </header>
    </footer>
 </body>
+
+<script>
+   // Assuming you have a configuration object
+   const config = {
+      APP_URL: "http://127.0.0.1:8000",
+   };
+   async function getDatas(url) {
+      const res = await fetch(url)
+      return await res.json()
+   }
+   document.querySelector('.searchProduct').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const url = config.APP_URL;
+      let value = document.querySelector('.search_form').value
+      const wrapper = document.querySelector('.results')
+      const lang = document.querySelector('.title').getAttribute('data-lang')
+      getDatas(url + "/getProducts/" + value).then(res => {
+
+         res.forEach(data => {
+            console.log(data.image)
+
+            let element = `
+               <div class="list border-bottom">
+                  <div class="list_image">
+                     <img src="{{ asset('storage/${data.image}') }}" alt="" />
+                  </div>
+                  <div class="d-flex flex-column ml-3">
+                     <span>${data.name[lang]}</span>
+                  </div>
+               </div>
+            `;
+            wrapper.insertAdjacentHTML('beforeend', element)
+         })
+      })
+   });
+</script>
 @endsection
