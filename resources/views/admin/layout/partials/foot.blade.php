@@ -200,6 +200,4 @@
          dateFormat: 'yy-mm-dd',
          tags: true
      })
-
-
  </script>

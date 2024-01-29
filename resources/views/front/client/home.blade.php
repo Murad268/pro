@@ -29,11 +29,10 @@
                <div class="row d-flex justify-content-center">
                   <div class="col-md-6">
                      <div class="card">
-                        <div class="input-box">
+                        <div style="display: flex; column-gap: 10px" class="input-box">
                            <input placeholder="məhsul axtar" type="text" class="form-control" />
-                           <i class="fa fa-search"></i>
+                           <button style="width: 100px;" class="btn btn-success">axtar</button>
                         </div>
-
                         <!-- <div class="results">
 										<div class="list border-bottom">
 											<div class="list_image">
@@ -91,7 +90,6 @@
                      <div class="navbar__login">{{auth()->user()->username}}</div>
                      <a style="display: bloack;" href="{{route('front.client.logout')}}">{{__('site.logout')}}</a>
                   </div>
-
                   @endauth
                   <div class="navbar__logo">
                      <img src="./assets/icons/photoeditorsdk-export-removebg-preview.png" alt="" />

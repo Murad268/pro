@@ -20,7 +20,6 @@
                      </div>
                   </form> -->
                         <div style="display: flex; column-gap: 6px">
-
                             <form style="display: flex; column-gap: 5px" class="select2_form" action="{{route('admin.admin.product.for_shops', ['slug' => $slug, 'filter'=> $filter])}}">
                                 <input style="height: 40px;" placeholder="start date" class="form-control" value="{{old('start_date', $start_date)}}" type="date" name="start_date" />
                                 <input style="height: 40px;" placeholder="end date" class="form-control" value="{{old('end_date', $end_date)}}" type="date" name="end_date" />
