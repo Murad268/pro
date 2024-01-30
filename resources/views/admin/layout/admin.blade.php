@@ -8,6 +8,7 @@
 
         <!-- Preloader -->
         <x-admin-header-component />
+        
         <!-- Content Wrapper. Contains page content -->
         @yield('content')
         <!-- /.content-wrapper -->
@@ -17,7 +18,7 @@
     <!-- ./wrapper -->
     <x-admin-footer-component />
 
-        @include('admin.layout.partials.foot')
+    @include('admin.layout.partials.foot')
 
 
 </body>

@@ -42,8 +42,6 @@
                                  <span>Client communication policy</span>
                               </div>
                            </div> -->
-
-
                         </div>
                      </div>
                   </div>
@@ -92,19 +90,16 @@
       const wrapper = document.querySelector('.results')
       const lang = document.querySelector('.title').getAttribute('data-lang')
       getDatas(url + "/getProducts/" + value).then(res => {
-
          res.forEach(data => {
-            console.log(data.image)
-
             let element = `
-               <div class="list border-bottom">
+               <a href="${config.APP_URL}/product_info/${data.slug[lang]}" class="list border-bottom">
                   <div class="list_image">
                      <img src="{{ asset('storage/${data.image}') }}" alt="" />
                   </div>
                   <div class="d-flex flex-column ml-3">
                      <span>${data.name[lang]}</span>
                   </div>
-               </div>
+               </a>
             `;
             wrapper.insertAdjacentHTML('beforeend', element)
          })

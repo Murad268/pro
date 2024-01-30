@@ -3,27 +3,27 @@
 
 <div style="padding: 20px;" class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <x-admin-content-headerr-component />
+
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
+               
                     <h3 class="card-title"><a class="btn btn-primary" href="{{route('admin.admin.product.create', $slug)}}">create statistic</a></h3>
                     <h3 class="card-title select-all all" id="selectAllCheckbox"><a class="ml-1 btn btn-success">select all</a></h3>
                     <div class="card-tools">
-                        <!-- <form action="{{route('admin.admin.product.search', ['slug' => $slug])}}" class="input-group input-group-sm" style="width: 350px;">
-                     <input name="q" type="text" class="form-control float-right" placeholder="Search">
-                     <div class="input-group-append">
-                        <button type="submit" class="btn btn-default">
-                           <i class="fas fa-search"></i>
-                        </button>
-                     </div>
-                  </form> -->
+                    <!-- <form action="{{route('admin.admin.product.search', ['slug' => $slug])}}" class="input-group input-group-sm" style="width: 350px;">
+                        <input name="q" type="text" class="form-control float-right" placeholder="Search">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default">
+                            <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form> -->
                         <div style="display: flex; column-gap: 6px">
                             <form style="display: flex; column-gap: 5px" class="select2_form" action="{{route('admin.admin.product.for_shops', ['slug' => $slug, 'filter'=> $filter])}}">
                                 <input style="height: 40px;" placeholder="start date" class="form-control" value="{{old('start_date', $start_date)}}" type="date" name="start_date" />
                                 <input style="height: 40px;" placeholder="end date" class="form-control" value="{{old('end_date', $end_date)}}" type="date" name="end_date" />
-
                                 <select name="select2" class="form-control select2">
                                     @if($filter)
                                     <option value="0">Hamısı</option>

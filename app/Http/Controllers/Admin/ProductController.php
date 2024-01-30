@@ -19,6 +19,7 @@ class ProductController extends Controller
     }
     public function index($slug)
     {
+
         $shops = PointOfSale::all();
         $filter = 0;
         $product = Product::where('slug->' . app()->getLocale(), 'like', '%' . $slug . '%')->first();

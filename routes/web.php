@@ -37,7 +37,19 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . '', 'as' => 'front.
         Route::get('/reset-password', [ResetPasswordController::class, 'reset_pass_open_reset'])->name('reset_pass_open_reset');
         Route::get('/new-password', [ResetPasswordController::class, 'new_password'])->name('new_password');
         Route::post('/add_new_password', [ResetPasswordController::class, 'add_new_password'])->name('add_new_password');
+
+
+        
+
     });
+
+
+    Route::get('/product_info/{slug}', [HomeController::class, 'product_info'])->name('product_info');
+
+    Route::post('/product_info/product_statistic/ids_proccess/{slug}', [HomeController::class, 'ids_proccess'])->name('product_info.ids_proccess');
+    Route::get('/product_info/product_statistic/search/{slug}', [HomeController::class, 'search'])->name('product_info.search');
+    Route::get('/product_info/product_statistic/for_shops/{slug}', [HomeController::class, 'for_shops'])->name('product_info.for_shops');
+    Route::get('/product_info/product_statistic/for_data/{slug}', [HomeController::class, 'for_data'])->name('product_info.for_data');
 
 
     Route::group(['prefix' => '', 'as' => 'client.', 'middleware' => "auth"], function () {
@@ -52,37 +64,19 @@ Route::get('/getProducts/{q}', [ApiProductsController::class, 'getProducts'])->n
 Route::group(['prefix' => LaravelLocalization::setLocale() . 'admin', 'as' => 'admin.'], function () {
     Route::group(['prefix' => '', 'as' => 'admin.'], function () {
         Route::get('/', [DashboardController::class, 'index'])->name('index');
-
-
         Route::resource('/points_of_sales', PointsOfSalesController::class);
         Route::post('/points_of_sales/ids_proccess', [PointsOfSalesController::class, 'ids_proccess'])->name('points_of_sales.ids_proccess');
-
-
         Route::get('/points_of_sales-search', [PointsOfSalesController::class, 'search'])->name('ids_proccess.search');
-
-
-
         Route::resource('/products', ProductsController::class);
         Route::post('/products/ids_proccess', [ProductsController::class, 'ids_proccess'])->name('products.ids_proccess');
         Route::get('/products-search', [ProductsController::class, 'search'])->name('products.search');
-
-
-
-
-
         Route::get('/product/{slug}', [ProductController::class, 'index'])->name('product.index');
         Route::get('/product_statistic/create/{slug}', [ProductController::class, 'create'])->name('product.create');
         Route::post('/product_statistic/store/{slug}', [ProductController::class, 'store'])->name('product.store');
         Route::post('/product_statistic/ids_proccess/{slug}', [ProductController::class, 'ids_proccess'])->name('product.ids_proccess');
         Route::post('/product_statistic/destroy/{slug}', [ProductController::class, 'destroy'])->name('product.destroy');
-
         Route::get('/product_statistic/search/{slug}', [ProductController::class, 'search'])->name('product.search');
-
-
         Route::get('/product_statistic/for_shops/{slug}', [ProductController::class, 'for_shops'])->name('product.for_shops');
-
         Route::get('/product_statistic/for_data/{slug}', [ProductController::class, 'for_data'])->name('product.for_data');
-
-
     });
 });
