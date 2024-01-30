@@ -29,7 +29,7 @@ class HomeController extends Controller
         $statistic = Statistic::where('product_id', $product->id)->orderBy('time')->paginate(10);
         $start_date = '';
         $end_date = '';
-        return view('front.client.product', compact('statistic', 'slug', 'shops', 'filter',  'start_date', 'end_date'));
+        return view('front.client.product', compact('statistic', 'slug', 'shops', 'filter',  'start_date', 'end_date', 'product'));
     }
 
 
@@ -61,6 +61,7 @@ class HomeController extends Controller
             $query->where('point_of_sale_id', $filter);
         }
         $statistic = $query->paginate(10);
+    
         return view('front.client.product', compact('statistic', 'slug', 'shops', 'filter', 'start_date', 'end_date', 'product'));
     }
 }

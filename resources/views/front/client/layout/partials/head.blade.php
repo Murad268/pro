@@ -6,6 +6,63 @@
 
    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet" />
    <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet" />
-   <link rel="stylesheet" href="./assets/css/index.css" />
+   <link rel="stylesheet" href="{{asset('assets/css/index.css')}}" />
+
    <title data-lang="{{app()->getLocale()}}" class="title">{{app()->getLocale()}}</title>
+   <style>
+      * {
+         padding: 0;
+         margin: 0;
+
+         box-sizing: border-box;
+         text-align: left;
+      }
+
+      ul,
+      ol {
+         list-style: none;
+         padding: 0;
+
+      }
+
+      ul li {
+         padding: 5px 0;
+
+      }
+
+      main {
+         padding: 40px 0;
+      }
+
+      .price_block ul {
+         margin: 0 !important;
+         height: 300px;
+         overflow: scroll;
+      }
+
+      .img_block {
+         display: block;
+         margin: 0 auto;
+         width: 80%;
+         height: 550px;
+         box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+      }
+
+      img {
+         width: 100% !important;
+         height: 100%;
+         object-fit: cover;
+      }
+
+      .price_block li {
+         display: flex;
+         align-items: center;
+         column-gap: 15px
+      }
+
+      .home_page_btn {
+         margin-left: 54px;
+         margin-bottom: 10px;
+      }
+   </style>
 </head>
