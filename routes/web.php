@@ -37,10 +37,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . '', 'as' => 'front.
         Route::get('/reset-password', [ResetPasswordController::class, 'reset_pass_open_reset'])->name('reset_pass_open_reset');
         Route::get('/new-password', [ResetPasswordController::class, 'new_password'])->name('new_password');
         Route::post('/add_new_password', [ResetPasswordController::class, 'add_new_password'])->name('add_new_password');
-
-
-        
-
     });
 
 
@@ -59,7 +55,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale() . '', 'as' => 'front.
 });
 
 
-Route::get('/getProducts/{q}', [ApiProductsController::class, 'getProducts'])->name('getProducts');
+Route::get('/getProducts/{q}', [ApiProductsController::class, 'getProducts'])->name('getProducts')->middleware('api_rate_limit');
 
 Route::group(['prefix' => LaravelLocalization::setLocale() . 'admin', 'as' => 'admin.'], function () {
     Route::group(['prefix' => '', 'as' => 'admin.'], function () {

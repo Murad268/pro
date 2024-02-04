@@ -19,6 +19,10 @@ class ApiProductsController extends Controller
         $model = Product::class;
         $query = 'name';
         $products = $this->data->simple_search($model, $query, $q, null);
-        return response()->json($products);
+        return response()->json($products)
+        ->header('Access-Control-Allow-Origin', '*')
+        ->header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+        ->header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With');
+
     }
 }
